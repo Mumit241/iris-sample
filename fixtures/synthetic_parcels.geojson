@@ -1,0 +1,144 @@
+{
+  "type": "FeatureCollection",
+  "name": "synthetic_parcels",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:32632"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              300.0,
+              100.0
+            ],
+            [
+              300.0,
+              300.0
+            ],
+            [
+              100.0,
+              300.0
+            ],
+            [
+              100.0,
+              100.0
+            ],
+            [
+              300.0,
+              100.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P002"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              600.0,
+              500.0
+            ],
+            [
+              600.0,
+              750.0
+            ],
+            [
+              350.0,
+              750.0
+            ],
+            [
+              350.0,
+              500.0
+            ],
+            [
+              600.0,
+              500.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P003"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1100.0,
+              850.0
+            ],
+            [
+              1100.0,
+              1100.0
+            ],
+            [
+              850.0,
+              1100.0
+            ],
+            [
+              850.0,
+              850.0
+            ],
+            [
+              1100.0,
+              850.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P004"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              550.0,
+              550.0
+            ],
+            [
+              550.0,
+              700.0
+            ],
+            [
+              400.0,
+              700.0
+            ],
+            [
+              400.0,
+              550.0
+            ],
+            [
+              550.0,
+              550.0
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
