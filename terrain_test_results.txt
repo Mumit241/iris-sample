@@ -1,0 +1,17 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\momit\Documents\Projects\iris-sample\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\momit\Documents\Projects\iris-sample
+configfile: pyproject.toml
+collecting ... collected 8 items
+
+tests/test_terrain_slope.py::test_synthetic_planar_slope PASSED          [ 12%]
+tests/test_terrain_slope.py::test_nodata_cells_excluded PASSED           [ 25%]
+tests/test_terrain_slope.py::test_neighbours_of_nodata_excluded PASSED   [ 37%]
+tests/test_terrain_slope.py::test_reject_geographic_crs PASSED           [ 50%]
+tests/test_terrain_parcels.py::test_insufficient_coverage PASSED         [ 62%]
+tests/test_terrain_parcels.py::test_mixed_crs_reprojection PASSED        [ 75%]
+tests/test_terrain_parcels.py::test_configurable_coverage_threshold PASSED [ 87%]
+tests/test_terrain_parcels.py::test_invalid_coverage_threshold PASSED    [100%]
+
+============================== 8 passed in 0.50s ==============================
