@@ -1,0 +1,168 @@
+{
+  "type": "FeatureCollection",
+  "name": "synthetic_parcels",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:32632"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P001",
+        "median_slope_deg": 6.379370212554932,
+        "p90_slope_deg": 6.379370212554932,
+        "max_slope_deg": 6.379370212554932,
+        "coverage": 1.0,
+        "nodata_share": 0.0,
+        "status": "PASS"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              300.0,
+              100.0
+            ],
+            [
+              300.0,
+              300.0
+            ],
+            [
+              100.0,
+              300.0
+            ],
+            [
+              100.0,
+              100.0
+            ],
+            [
+              300.0,
+              100.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P002",
+        "median_slope_deg": null,
+        "p90_slope_deg": null,
+        "max_slope_deg": null,
+        "coverage": 0.5376,
+        "nodata_share": 0.46240000000000003,
+        "status": "REVIEW_REQUIRED"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              600.0,
+              500.0
+            ],
+            [
+              600.0,
+              750.0
+            ],
+            [
+              350.0,
+              750.0
+            ],
+            [
+              350.0,
+              500.0
+            ],
+            [
+              600.0,
+              500.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P003",
+        "median_slope_deg": null,
+        "p90_slope_deg": null,
+        "max_slope_deg": null,
+        "coverage": 0.3136,
+        "nodata_share": 0.6864,
+        "status": "REVIEW_REQUIRED"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1100.0,
+              850.0
+            ],
+            [
+              1100.0,
+              1100.0
+            ],
+            [
+              850.0,
+              1100.0
+            ],
+            [
+              850.0,
+              850.0
+            ],
+            [
+              1100.0,
+              850.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "P004",
+        "median_slope_deg": null,
+        "p90_slope_deg": null,
+        "max_slope_deg": null,
+        "coverage": 0.0,
+        "nodata_share": 1.0,
+        "status": "REVIEW_REQUIRED"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              550.0,
+              550.0
+            ],
+            [
+              550.0,
+              700.0
+            ],
+            [
+              400.0,
+              700.0
+            ],
+            [
+              400.0,
+              550.0
+            ],
+            [
+              550.0,
+              550.0
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
