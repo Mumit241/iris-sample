@@ -1,5 +1,5 @@
 from rasterio.transform import array_bounds
-
+from rasterio.transform import xy
 import json
 from pathlib import Path
 
@@ -10,6 +10,48 @@ from rasterio.warp import transform_geom
 from shapely.geometry import shape, box
 
 from app.terrain.slope import calculate_slope
+
+def calculate_area_weighted_coverage(
+    parcel_geometry,
+    valid_slope_mask,
+    raster_transform,
+):
+    """Calculate parcel coverage from valid raster cell areas.
+
+    Counts only portions of valid slope cells that overlap
+    the parcel. Areas outside the raster contribute zero.
+    """
+    from shapely.geometry import Polygon
+    from rasterio.transform import array_bounds
+
+    parcel_area = parcel_geometry.area
+
+    if parcel_area <= 0:
+        raise ValueError("Parcel area must be positive.")
+
+    rows, cols = np.where(valid_slope_mask)
+
+    valid_area = 0.0
+
+    for row, col in zip(rows, cols):
+        # Pixel corners in raster CRS
+        corners = [
+            raster_transform @ (col, row),
+            raster_transform @ (col + 1, row),
+            raster_transform @ (col + 1, row + 1),
+            raster_transform @ (col, row + 1),
+        ]
+
+        pixel = Polygon(corners)
+
+        if pixel.intersects(parcel_geometry):
+            valid_area += pixel.intersection(
+                parcel_geometry
+            ).area
+
+    return float(
+        np.clip(valid_area / parcel_area, 0.0, 1.0)
+    )
 
 
 def analyze_parcels(
@@ -156,18 +198,14 @@ def analyze_parcels(
             np.isfinite(selected)
         ]
 
-        internal_coverage = (
-            len(valid) / count_inside
+        valid_slope_mask = np.isfinite(slope)
+
+        coverage = calculate_area_weighted_coverage(
+            parcel_geometry,
+            valid_slope_mask,
+            transform,
         )
 
-        # Step 9: Include outside-DEM area
-        coverage = (
-            internal_coverage * footprint_share
-        )
-
-        coverage = float(
-            np.clip(coverage, 0.0, 1.0)
-        )
 
         nodata_share = 1.0 - coverage
 
