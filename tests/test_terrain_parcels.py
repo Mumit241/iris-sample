@@ -104,3 +104,39 @@ def test_invalid_coverage_threshold():
             PARCEL_PATH,
             minimum_coverage=1.5,
         )
+
+def test_narrow_parcel_coverage(tmp_path):
+    """A narrow parcel intersecting valid DEM cells
+    must not automatically receive zero coverage.
+    """
+    import json
+    from shapely.geometry import box, mapping
+
+    # Narrow polygon inside the valid part of the DEM.
+    # Width 2 m, compared with a 10 m raster cell.
+    polygon = box(201, 101, 203, 151)
+
+    fixture = {
+        "type": "FeatureCollection",
+        "crs": {
+            "type": "name",
+            "properties": {"name": "EPSG:32632"},
+        },
+        "features": [
+            {
+                "type": "Feature",
+                "properties": {"parcel_id": "NARROW001"},
+                "geometry": mapping(polygon),
+            }
+        ],
+    }
+
+    path = tmp_path / "narrow_parcel.geojson"
+
+    with path.open("w", encoding="utf-8") as file:
+        json.dump(fixture, file)
+
+    results = analyze_parcels(DEM_PATH, path)
+
+    assert len(results) == 1
+    assert results[0]["coverage"] > 0

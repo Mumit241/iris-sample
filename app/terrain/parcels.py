@@ -179,24 +179,20 @@ def analyze_parcels(
 
         # Parcel entirely outside DEM or too small
         # to contain a sampled raster pixel
-        if count_inside == 0:
-            results.append({
-                "parcel_id": parcel_id,
-                "median_slope_deg": None,
-                "p90_slope_deg": None,
-                "max_slope_deg": None,
-                "coverage": 0.0,
-                "nodata_share": 1.0,
-                "status": "REVIEW_REQUIRED",
-            })
-            continue
+       
 
         # Step 8: Extract slope values
-        selected = slope[inside]
+         # Include all raster pixels touched by the parcel.
+        inside = geometry_mask(
+            [geom],
+            out_shape=(height, width),
+            transform=transform,
+            invert=True,
+            all_touched=True,
+        )
 
-        valid = selected[
-            np.isfinite(selected)
-        ]
+        selected = slope[inside]
+        valid = selected[np.isfinite(selected)]
 
         valid_slope_mask = np.isfinite(slope)
 
